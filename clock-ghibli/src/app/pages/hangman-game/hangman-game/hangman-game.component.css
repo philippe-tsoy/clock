@@ -1,0 +1,39 @@
+html {
+    background-color: papayawhip;
+}
+
+.container{
+    text-align: center;
+}
+
+h1{
+    color: rgb(235, 81, 196);
+}
+
+.sentence{
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.letter-slot{
+  padding: 5px;
+  font-size: xx-large;
+  display: flex;
+  flex-direction: column;
+}
+
+.letter{
+    min-height: 37px;
+    min-width: 25px;
+}
+
+.space{
+    min-width: 40px;
+}
+
+
+.error{
+    color: red;
+}

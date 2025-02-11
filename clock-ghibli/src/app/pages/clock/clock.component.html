@@ -1,0 +1,64 @@
+<div id="title"> Clock for Shruti</div>
+<div id="clock">
+  <div class="other">
+    <img src='{{ "assets/0" + Math.floor(time.getHours()/10) + "_hours.jpg" }}' style="width: 100%;" alt='{{time.getHours()}}'/>
+  </div>
+  <div id="hours">
+    <img src='{{ "assets/0" + time.getHours()%10 + "_hours.jpg" }}' style="width: 100%;" alt='{{time.getHours()}}'/>
+     <!-- {{ time.getHours() }} -->
+  </div>
+  <div class="other">
+    <img src='{{ "assets/0" + Math.floor(time.getMinutes()/10) + "_hours.jpg" }}' style="width: 100%;" alt='{{time.getHours()}}'/>
+  </div>
+  <div id="minutes">
+    <!-- <img src='{{ "assets/images/" + time.minutes + ".jpg" }}'/> -->
+    <!-- <img src='{{ "assets/" + time.getMinutes() + "_minutes.jpg" }}' style="width: 100%;" alt='{{time.getMinutes()}}'/> -->
+    <img src='{{ "assets/0" + time.getMinutes()%10 + "_hours.jpg" }}' style="width: 100%;" alt='{{time.getHours()}}'/>
+  </div>
+  <div class="other">
+    <img src='{{ "assets/0" + Math.floor(time.getSeconds()/10) + "_hours.jpg" }}' style="width: 100%;" alt='{{time.getHours()}}'/>
+  </div>
+  <div id="seconds">
+    <!-- {{ time.getSeconds() }} -->
+    <img src='{{ "assets/0" + time.getSeconds()%10 + "_hours.jpg" }}' style="width: 100%;" alt='{{time.getHours()}}'/>
+
+
+    <!-- <img src='{{ "assets/images/" + time.seconds + ".jpg" }}'/> -->
+  </div>
+  
+</div>
+<button mat-stroked-button [matMenuTriggerFor]="menu">Open Menu</button>
+<mat-menu #menu="matMenu" >
+  <mat-expansion-panel (click)="$event.stopPropagation()" >
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Expansion Panel
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p>Content goes here.</p>
+  </mat-expansion-panel>
+  <mat-expansion-panel (click)="$event.stopPropagation()" >
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Expansion Panel
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p>Content goes here.</p>
+  </mat-expansion-panel>
+  <mat-expansion-panel (click)="$event.stopPropagation()" >
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Expansion Panel
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p>Content goes here.</p>
+  </mat-expansion-panel>
+  <mat-expansion-panel (click)="$event.stopPropagation()" >
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Expansion Panel
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p>Content goes here.</p>
+  </mat-expansion-panel>
+</mat-menu>
