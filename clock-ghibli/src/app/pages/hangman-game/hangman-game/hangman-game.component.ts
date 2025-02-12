@@ -5,7 +5,7 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, FormsModule, Reac
 import { MatError, MatFormFieldModule } from '@angular/material/form-field';
 import { HangmanLetter } from '../../../interfaces/hangman-letter.interface';
 import { DialogComponent } from '../../../components/dialog/dialog/dialog.component';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Subject } from 'rxjs';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
 
@@ -28,6 +28,7 @@ export class HangmanGameComponent implements OnDestroy{
     successCounter: number = 0;
     form: FormGroup;
     isValid = true;
+    currentHangmanImage: string = '';
 
     ngOnDestroy(): void {
         console.log('Component destroyed');
@@ -59,22 +60,36 @@ export class HangmanGameComponent implements OnDestroy{
             if (event instanceof NavigationEnd) {
               this.viewContainerRef.clear(); // Force clear previous views
             }
-          });
+        });
 
-          this.router.events.subscribe((event) => {
+        this.router.events.subscribe((event) => {
             if (event instanceof NavigationEnd) {
-              this.cdr.detectChanges();
+                this.cdr.detectChanges();
             }
-          });
+        });
+
+        this.setCurrentImage()
     }
 
     onEnter(){
         if (this.singleLetterValidator()){
-            this.solvedCharacterMap.get(this.form.value.input)?.forEach((index: number) => {
+            this.isValid =true
+            const map = this.solvedCharacterMap.get(this.form.value.input)
+            if (!map) {
+                this.errorCounter++;
+                if (this.errorCounter >= 9) {
+                    const matDialogConfig: MatDialogConfig = {data: {title: "Oh no!", content: "You didn't find the message ):", action: "Try again!"}}
+                    const dialogRef = this.dialog.open(DialogComponent, matDialogConfig);
+                    dialogRef.afterClosed().subscribe(() => {
+                        window.location.reload();
+                    });
+                }
+                this.setCurrentImage();
+            }
+            else map.forEach((index: number) => {
                 this.hangmanSentence[index]!.shown = true
                 this.successCounter--
             })
-            this.isValid =true
             this.form.controls['input'].reset();
             if (this.successCounter == 0){
                 this.openDialog();
@@ -96,7 +111,8 @@ export class HangmanGameComponent implements OnDestroy{
     }
 
     openDialog(): void {
-        const dialogRef = this.dialog.open(DialogComponent);
+        const matDialogConfig: MatDialogConfig = {data: {title: "Hi Shruti!", content: "You found the hidden message!", action: "Oh my! What next?"}}
+        const dialogRef = this.dialog.open(DialogComponent, matDialogConfig);
         dialogRef.afterClosed().subscribe(() => {
             this.navigate();
         });
@@ -116,4 +132,7 @@ export class HangmanGameComponent implements OnDestroy{
         return this.form.value.input?.toLowerCase().replace(/\W/g, '') === this.solvedSentence.replace(/\W/g, '')
     }
 
+    private setCurrentImage(){
+        this.currentHangmanImage = `./../../../../assets/hangman${this.errorCounter}.jpg`
+    }
 }

@@ -1,4 +1,4 @@
-import { Component, inject, model } from '@angular/core';
+import { Component, Inject, inject, model } from '@angular/core';
 import {
     MAT_DIALOG_DATA,
     MatDialog,
@@ -35,9 +35,9 @@ export class DialogComponent {
     readonly dialogRef = inject(MatDialogRef<DialogComponent>);
     readonly data = inject<String>(MAT_DIALOG_DATA);
 
-    // constructor(private router: Router){
+    constructor(@Inject(MAT_DIALOG_DATA) public dialogData: any){
 
-    // }
+    }
     onClick(): void {
         this.dialogRef.close();
     }

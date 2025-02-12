@@ -1,7 +1,7 @@
-<h2 mat-dialog-title>Hi Shruti!</h2>
-<mat-dialog-content>
-    You found the hidden message!
+<h2 mat-dialog-title class="dialog-title">{{ dialogData.title }}</h2>
+<mat-dialog-content class="dialog-content">
+  <p>{{ dialogData.content }}</p>
 </mat-dialog-content>
-<mat-dialog-actions>
-  <button mat-button (click)="onClick()">Oh my! What next?</button>
+<mat-dialog-actions class="dialog-actions">
+  <button mat-button (click)="onClick()" class="action-button">{{ dialogData.action }}</button>
 </mat-dialog-actions>

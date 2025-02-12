@@ -1,10 +1,9 @@
-<!-- <div class="container" >
+<div class="container" >
     <h1>
         Hangman game
     </h1>
     <div>
-        {{errorCounter}}
-        {{successCounter}}
+        <img [src]="currentHangmanImage" width="40%">
     </div>
     <div class="sentence">
         <div *ngFor="let letter of hangmanSentence" class="letter-slot">
@@ -28,13 +27,12 @@
         </div>
     </div>
     <form class="example-form" [formGroup]="form" (ngSubmit)="onEnter()">
-    <mat-form-field class="example-full-width">
+    <mat-form-field class="valentine-form-field">
         <mat-label>Enter letter</mat-label>
         <input matInput name="letter" formControlName="input" autocomplete="off">
     </mat-form-field>
     </form>
     <div [hidden]="isValid" class="error" >
         Please enter only one letter or the full sentence
-    </div> -->
-    <button (click)="navigate()">button</button>
-<!-- </div> -->
+    </div>
+</div>
