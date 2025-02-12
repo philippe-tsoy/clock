@@ -24,24 +24,24 @@ jobs:
       - name: Build project
         run: npm run build  # Run your build script (if applicable)
 
-      - name: Deploy to Server
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          SERVER_USER: ${{ secrets.SERVER_USER }}
-          SERVER_HOST: ${{ secrets.SERVER_HOST }}
-        run: |
-          # Set up SSH
-          mkdir -p ~/.ssh
-          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
+    #   - name: Deploy to Server
+    #     env:
+    #       SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+    #       SERVER_USER: ${{ secrets.SERVER_USER }}
+    #       SERVER_HOST: ${{ secrets.SERVER_HOST }}
+    #     run: |
+    #       # Set up SSH
+    #       mkdir -p ~/.ssh
+    #       echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+    #       chmod 600 ~/.ssh/id_rsa
 
-          # Add the server to known hosts to prevent SSH prompts
-          ssh-keyscan -H $SERVER_HOST >> ~/.ssh/known_hosts
+    #       # Add the server to known hosts to prevent SSH prompts
+    #       ssh-keyscan -H $SERVER_HOST >> ~/.ssh/known_hosts
 
-          # Deploy command (e.g., copy files to the server, restart services)
-          ssh $SERVER_USER@$SERVER_HOST << 'EOF'
-            cd /path/to/your/project || exit 1
-            git pull origin main || exit 1
-            npm install --production || exit 1
-            pm2 restart your-app || exit 1
-          EOF
+    #       # Deploy command (e.g., copy files to the server, restart services)
+    #       ssh $SERVER_USER@$SERVER_HOST << 'EOF'
+    #         cd /path/to/your/project || exit 1
+    #         git pull origin main || exit 1
+    #         npm install --production || exit 1
+    #         pm2 restart your-app || exit 1
+    #       EOF
