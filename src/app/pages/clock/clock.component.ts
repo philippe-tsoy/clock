@@ -7,13 +7,14 @@ import {MatButtonModule} from '@angular/material/button';
   selector: 'app-clock',
   imports: [MatMenuModule, MatExpansionModule, MatButtonModule],
   templateUrl: './clock.component.html',
-  styleUrl: './clock.component.css'
+  styleUrl: './clock.component.css',
+  standalone: true
 })
 export class ClockComponent {
   title = 'clock-ghibli';
   time = new Date();
   Math = Math;
-  
+
   constructor() {
     setInterval(() => {
       this.time = new Date();

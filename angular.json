@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "clock-ghibli": {
+    "valentine.github.io": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/clock-ghibli",
+            "outputPath": "dist/valentine.github.io",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -58,10 +58,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "clock-ghibli:build:production"
+              "buildTarget": "valentine.github.io:build:production"
             },
             "development": {
-              "buildTarget": "clock-ghibli:build:development"
+              "buildTarget": "valentine.github.io:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -69,7 +69,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "clock-ghibli:build"
+            "buildTarget": "valentine.github.io:build"
           }
         },
         "test": {
