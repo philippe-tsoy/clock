@@ -56,17 +56,17 @@ export class HangmanGameComponent implements OnDestroy{
                 this.solvedCharacterMap.set(letter, [index])
         }
 
-        this.router.events.subscribe((event) => {
-            if (event instanceof NavigationEnd) {
-              this.viewContainerRef.clear(); // Force clear previous views
-            }
-        });
+        // this.router.events.subscribe((event) => {
+        //     if (event instanceof NavigationEnd) {
+        //       this.viewContainerRef.clear(); // Force clear previous views
+        //     }
+        // });
 
-        this.router.events.subscribe((event) => {
-            if (event instanceof NavigationEnd) {
-                this.cdr.detectChanges();
-            }
-        });
+        // this.router.events.subscribe((event) => {
+        //     if (event instanceof NavigationEnd) {
+        //         this.cdr.detectChanges();
+        //     }
+        // });
 
         this.setCurrentImage()
     }
@@ -133,6 +133,6 @@ export class HangmanGameComponent implements OnDestroy{
     }
 
     private setCurrentImage(){
-        this.currentHangmanImage = `./../../../../assets/hangman${this.errorCounter}.jpg`
+        this.currentHangmanImage = `assets/hangman${this.errorCounter}.jpg`
     }
 }
